@@ -61,6 +61,7 @@ body.dark-mode {
   font-size: 1.5rem;
   font-weight: 700;
   color: inherit;
+  justify-self: center;
 }
 
 /* ===== Desktop Navigation ===== */
@@ -104,11 +105,30 @@ body.dark-mode {
   font-size: 0.9rem;
 }
 
-/* ===== Mobile Navigation ===== */
-.mobile-controls {
-  display: none;
+.mdc-icon-button {
+  background: none;
+  border: none;
+  color: inherit !important;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+}
+
+.mdc-icon-button:hover {
+  opacity: 0.8;
+}
+
+/* ===== Mobile Controls ===== */
+.mobile-hamburger {
+  display: none;
+  justify-self: start;
+}
+
+.mobile-theme-toggle {
+  display: none;
+  justify-self: end;
 }
 
 .hamburger-menu {
@@ -122,6 +142,7 @@ body.dark-mode {
   justify-content: center;
 }
 
+/* ===== Mobile Menu ===== */
 .mobile-menu {
   position: fixed;
   top: 64px;
@@ -230,6 +251,7 @@ h1 {
 
 .dark-mode .feature-card:hover {
   box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
 }
 
 .card-image {
@@ -242,6 +264,18 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+/* Fix description line spacing for side-text cards */
+.feature-card.side-text h3,
+.feature-card.side-text p {
+  margin: 0;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.feature-card.side-text p {
+  margin-top: 4px;
 }
 
 .feature-card h3 {
@@ -286,11 +320,13 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: transparent !important;
 }
 
 .gradient-container img {
   max-width: 100%;
   height: auto;
+  background: transparent !important;
   mix-blend-mode: multiply;
 }
 
@@ -343,11 +379,14 @@ h1 {
     display: none;
   }
   
-  .mobile-controls {
+  .mobile-hamburger,
+  .mobile-theme-toggle {
     display: flex;
+    align-items: center;
   }
   
   .top-bar {
+    grid-template-columns: auto 1fr auto;
     padding: 0 16px;
   }
   
