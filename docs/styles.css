@@ -40,17 +40,17 @@ body.dark-mode {
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  background-color: rgba(255, 255, 255, 0.15); /* very transparent */
-  backdrop-filter: blur(30px); /* stronger blur */
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25); /* subtle border for visibility */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   z-index: 100;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s;
 }
 
 .dark-mode .top-bar {
-  background-color: rgba(18, 18, 18, 0.15); /* keep transparent */
+  background-color: rgba(18, 18, 18, 0.15);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -63,6 +63,7 @@ body.dark-mode {
   color: inherit;
 }
 
+/* ===== Desktop Navigation ===== */
 .nav-center {
   position: absolute;
   left: 50%;
@@ -108,6 +109,70 @@ body.dark-mode {
 }
 
 .mdc-icon-button:hover {
+  opacity: 0.8;
+}
+
+/* ===== Mobile Navigation ===== */
+.mobile-controls {
+  display: none;
+}
+
+.hamburger-menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-light);
+  z-index: 99;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+}
+
+.dark-mode .mobile-menu {
+  background-color: var(--bg-dark);
+}
+
+.mobile-menu.active {
+  transform: translateY(0);
+  max-height: 500px;
+  opacity: 1;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.mobile-nav a {
+  color: inherit;
+  text-decoration: none;
+  padding: 12px 0;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: opacity 0.2s;
+}
+
+.dark-mode .mobile-nav a {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav a:hover {
   opacity: 0.8;
 }
 
@@ -186,7 +251,7 @@ h1 {
   object-fit: contain;
 }
 
-/* === Fix description line spacing for side-text cards === */
+/* Fix description line spacing for side-text cards */
 .feature-card.side-text h3,
 .feature-card.side-text p {
   margin: 0;
@@ -215,52 +280,6 @@ h1 {
   color: var(--subtext-dark);
 }
 
-/* ===== Responsive Design ===== */
-@media (max-width: 768px) {
-  .cards-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .feature-card {
-    max-width: 100%;
-  }
-
-  .nav-center {
-    gap: 16px;
-  }
-
-  .right-controls {
-    gap: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .top-bar {
-    padding: 0 16px;
-  }
-
-  .nav-center {
-    gap: 12px;
-  }
-
-  .hero {
-    padding: 120px 16px 40px;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-}
-
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: inherit;
-  padding: 8px;
-}
-
 /* ===== Gradient Sections ===== */
 .gradient-sections {
   max-width: 1200px;
@@ -286,19 +305,19 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: transparent !important; /* Ensure no background */
+  background: transparent !important;
 }
 
 .gradient-container img {
   max-width: 100%;
   height: auto;
-  background: transparent !important; /* Ensure no background on image */
-  mix-blend-mode: multiply; /* Helps blend better with dark mode */
+  background: transparent !important;
+  mix-blend-mode: multiply;
 }
 
 .dark-mode .gradient-container img {
-  mix-blend-mode: screen; /* Better visibility in dark mode */
-  filter: brightness(1.1); /* Slightly brighter in dark mode */
+  mix-blend-mode: screen;
+  filter: brightness(1.1);
 }
 
 .text-content {
@@ -323,87 +342,16 @@ h1 {
   color: var(--subtext-dark);
 }
 
-/* Alternate layout for mobile */
-@media (max-width: 768px) {
-  .gradient-section {
-    flex-direction: column;
-    margin-bottom: 60px;
-    gap: 30px;
-  }
-
-  .gradient-container,
-  .text-content {
-    max-width: 100%;
-  }
-
-  .gradient-container.left,
-  .gradient-container.right {
-    order: 1;
-  }
-
-  .text-content.left,
-  .text-content.right {
-    order: 2;
-    text-align: center;
-    padding: 0 20px;
-  }
-}
-
-/* ===== Mobile Navigation Styles ===== */
-.mobile-controls {
-  display: none;
-}
-
-.hamburger-menu {
+/* ===== Theme Toggle ===== */
+.theme-toggle {
   background: none;
   border: none;
   cursor: pointer;
   color: inherit;
   padding: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.mobile-menu {
-  position: fixed;
-  top: 64px;
-  left: 0;
-  width: 100%;
-  background-color: var(--bg-light);
-  z-index: 99;
-  transform: translateY(-100%);
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.dark-mode .mobile-menu {
-  background-color: var(--bg-dark);
-}
-
-.mobile-menu.active {
-  transform: translateY(0);
-}
-
-.mobile-nav {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-}
-
-.mobile-nav a {
-  color: inherit;
-  text-decoration: none;
-  padding: 12px 0;
-  font-weight: 500;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.dark-mode .mobile-nav a {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* ===== Responsive Adjustments ===== */
+/* ===== Responsive Design ===== */
 @media (max-width: 768px) {
   .desktop-nav {
     display: none;
@@ -417,6 +365,15 @@ h1 {
   
   .top-bar {
     justify-content: space-between;
+  }
+  
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .feature-card {
+    max-width: 100%;
   }
   
   .gradient-section {
@@ -454,5 +411,21 @@ h1 {
   
   h1 {
     font-size: 2rem;
+  }
+  
+  .subtext {
+    font-size: 1rem;
+  }
+  
+  .gradient-sections {
+    padding: 40px 16px;
+  }
+  
+  .text-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .text-content p {
+    font-size: 1rem;
   }
 }
