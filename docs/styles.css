@@ -452,3 +452,25 @@ h1 {
     font-size: 1rem;
   }
 }
+
+/* Remove blue highlight on buttons */
+button, 
+button:focus, 
+button:active,
+a,
+a:focus,
+a:active {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  tap-highlight-color: transparent !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Specifically for mobile browsers */
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
