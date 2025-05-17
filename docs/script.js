@@ -1,69 +1,59 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Theme toggle functionality
-    const themeToggles = document.querySelectorAll('.theme-toggle'); // Select all theme toggles
+    // Get all theme toggle buttons
+    const themeToggles = document.querySelectorAll('.theme-toggle');
     const body = document.body;
     
-    // Check saved theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.add('dark-mode');
-        updateThemeIcons('light_mode');
-    } else {
-        updateThemeIcons('dark_mode');
-    }
-    
-    // Update all theme icons
-    function updateThemeIcons(iconName) {
+    // Function to update all theme icons
+    const updateThemeIcons = (isDarkMode) => {
+        const iconName = isDarkMode ? 'light_mode' : 'dark_mode';
         themeToggles.forEach(toggle => {
             const icon = toggle.querySelector('.material-icons');
             if (icon) icon.textContent = iconName;
         });
+    };
+
+    // Check saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-mode');
+        updateThemeIcons(true);
+    } else {
+        updateThemeIcons(false);
     }
     
     // Add event listeners to all theme toggles
     themeToggles.forEach(toggle => {
         toggle.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent event from closing mobile menu
+            e.stopPropagation();
+            const isDarkMode = !body.classList.contains('dark-mode');
             body.classList.toggle('dark-mode');
             
-            if (body.classList.contains('dark-mode')) {
-                updateThemeIcons('light_mode');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                updateThemeIcons('dark_mode');
-                localStorage.setItem('theme', 'light');
-            }
+            updateThemeIcons(isDarkMode);
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         });
     });
 
     // Mobile menu functionality
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const mobileMenu = document.querySelector('.mobile-menu');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
     
-    // Toggle mobile menu
-    hamburgerMenu.addEventListener('click', (e) => {
-        e.stopPropagation();
-        mobileMenu.classList.toggle('active');
-        const menuIcon = hamburgerMenu.querySelector('.material-icons');
-        menuIcon.textContent = mobileMenu.classList.contains('active') ? 'close' : 'menu';
-    });
-
-    // Close mobile menu when clicking on a link
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            hamburgerMenu.querySelector('.material-icons').textContent = 'menu';
+    if (hamburgerMenu && mobileMenu) {
+        hamburgerMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('active');
+            const menuIcon = hamburgerMenu.querySelector('.material-icons');
+            menuIcon.textContent = mobileMenu.classList.contains('active') ? 'close' : 'menu';
         });
-    });
 
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.mobile-menu') && !e.target.closest('.mobile-controls')) {
-            mobileMenu.classList.remove('active');
-            hamburgerMenu.querySelector('.material-icons').textContent = 'menu';
-        }
-    });
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.mobile-menu') && !e.target.closest('.mobile-controls')) {
+                mobileMenu.classList.remove('active');
+                const menuIcon = hamburgerMenu.querySelector('.material-icons');
+                if (menuIcon) menuIcon.textContent = 'menu';
+            }
+        });
+    }
 
     // Intersection observer for gradient sections
     const gradientSections = document.querySelectorAll('.gradient-section');
