@@ -21,9 +21,12 @@
     <div class="logo">RiGallery</div>
 
     <nav class="nav-center desktop-nav">
-      <a href="#">Home</a>
-      <a href="#">Features</a>
-      <a href="#">Support</a>
+      <div class="nav-links-container">
+        <a href="#" class="nav-link" data-target="top">Home</a>
+        <a href="#" class="nav-link" data-target="gradients">Features</a>
+        <a href="support.html" class="nav-link">Support</a>
+        <a href="https://github.com/fast4x/RiGallery/releases" class="download-link nav-link" target="_blank">Download</a>
+      </div>
     </nav>
 
     <div class="right-controls desktop-nav">
@@ -45,16 +48,17 @@
 
   <div class="mobile-menu">
     <nav class="mobile-nav">
-      <a href="#">Home</a>
-      <a href="#">Features</a>
-      <a href="#">Support</a>
+      <a href="#" class="nav-link" data-target="top">Home</a>
+      <a href="#" class="nav-link" data-target="gradients">Features</a>
+      <a href="support.html" class="nav-link">Support</a>
+      <a href="https://github.com/fast4x/RiGallery/releases" class="download-link" target="_blank">Download</a>
       <a href="https://t.me/riprojects_app">Telegram</a>
       <a href="https://github.com/fast4x/RiGallery">GitHub</a>
     </nav>
   </div>
 
   <main class="content">
-    <section class="hero">
+    <section class="hero" id="top">
       <h1>Why Choose RiGallery?</h1>
       <p class="subtext">
         Not just private — open-source, offline, and built around you.<br />
@@ -62,31 +66,31 @@
       </p>
     </section>
 
-    <section class="cards-container">
-      <div class="feature-card side-text">
-        <div class="card-image">
+    <section class="features-container">
+      <div class="feature-item">
+        <div class="feature-image">
           <img src="https://raw.githubusercontent.com/chayotic/RiGallery-Website/main/docs/assets/svg/Open%20source.svg" alt="Open Source" />
         </div>
-        <h3>01 Open Source</h3>
+        <h3><span class="feature-number">01</span> Open Source</h3>
         <p>Transparent code, zero secrets</p>
       </div>
-      <div class="feature-card side-text">
-        <div class="card-image">
+      <div class="feature-item">
+        <div class="feature-image">
           <img src="https://raw.githubusercontent.com/chayotic/RiGallery-Website/main/docs/assets/svg/Private%20data.svg" alt="Private Data" />
         </div>
-        <h3>02 Private</h3>
+        <h3><span class="feature-number">02</span> Private</h3>
         <p>Nothing leaves your device. Ever.</p>
       </div>
-      <div class="feature-card">
-        <div class="card-image">
+      <div class="feature-item">
+        <div class="feature-image">
           <img src="https://raw.githubusercontent.com/chayotic/RiGallery-Website/main/docs/assets/svg/Images.svg" alt="Easy to Use" />
         </div>
-        <h3>03 Easy To Use</h3>
+        <h3><span class="feature-number">03</span> Easy To Use</h3>
         <p>Intuitive design that just makes sense</p>
       </div>
     </section>
 
-    <section class="gradient-sections">
+    <section class="gradient-sections" id="gradients">
       <div class="gradient-section">
         <div class="gradient-container left">
           <img data-mode="light" src="https://raw.githubusercontent.com/chayotic/RiGallery-Website/main/docs/assets/decor/light/Grad_14.png" alt="Gradient Light 1" />
