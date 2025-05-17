@@ -1,3 +1,25 @@
+/* ===== Root Variables ===== */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --subtext-color: #666666;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --card-text: #444444;
+    --header-bg: rgba(255, 255, 255, 0.92);
+    --shadow-light: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #f5f5f5;
+    --subtext-color: #aaaaaa;
+    --card-bg: rgba(30, 30, 30, 0.85);
+    --card-text: #dddddd;
+    --header-bg: rgba(18, 18, 18, 0.92);
+    --shadow-light: rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Base Styles ===== */
 * {
     margin: 0;
     padding: 0;
@@ -5,17 +27,13 @@
 }
 
 body {
-    background-color: #ffffff;
-    color: #333333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: 'Montserrat', sans-serif;
     transition: background-color 0.3s, color 0.3s;
 }
 
-body.dark-mode {
-    background-color: #121212;
-    color: #f5f5f5;
-}
-
+/* ===== Top Bar ===== */
 .top-bar {
     position: fixed;
     top: 0;
@@ -26,17 +44,12 @@ body.dark-mode {
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
-    background-color: rgba(255, 255, 255, 0.92);
+    background-color: var(--header-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     z-index: 100;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px var(--shadow-light);
     transition: background-color 0.3s;
-}
-
-.dark-mode .top-bar {
-    background-color: rgba(18, 18, 18, 0.92);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
@@ -67,37 +80,138 @@ body.dark-mode {
 
 .right-controls {
     display: flex;
-    gap: 8px;
+    gap: 16px;
+    align-items: center;
 }
 
-.mdc-icon-button {
-    color: inherit !important;
-    width: 40px;
-    height: 40px;
+.social-link {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
     padding: 8px;
-    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.mdc-icon-button:hover {
-    transform: scale(1.1);
+.theme-toggle:hover {
+    opacity: 0.8;
 }
 
-.mdc-icon-button .material-icons {
-    font-size: 1.25rem;
-}
-
-.content {
-    padding-top: 84px;
-    min-height: 100vh;
-}
-
-.content-block {
-    padding: 40px;
+/* ===== Hero Section ===== */
+.hero {
     text-align: center;
+    padding: 140px 24px 60px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 h1 {
     font-weight: 600;
-    margin-bottom: 16px;
-    font-size: 2.5rem;
+    font-size: 2.4rem;
+    margin-bottom: 24px;
+    line-height: 1.3;
+}
+
+.subtext {
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--subtext-color);
+}
+
+/* ===== Cards Section ===== */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 24px;
+    width: 100%;
+    max-width: 350px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    color: var(--card-text);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.card-image {
+    width: 100%;
+    height: 160px;
+    margin-bottom: 20px;
+    background-color: #e0e0e0;
+    border-radius: 12px;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.feature-card p {
+    text-align: center;
+    line-height: 1.6;
+    margin-top: auto;
+    color: var(--card-text);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .feature-card {
+        max-width: 100%;
+    }
+    
+    .nav-center {
+        gap: 16px;
+    }
+    
+    .right-controls {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-bar {
+        padding: 0 16px;
+    }
+    
+    .nav-center {
+        gap: 12px;
+    }
+    
+    .hero {
+        padding: 120px 16px 40px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
 }
