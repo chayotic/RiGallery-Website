@@ -104,24 +104,11 @@ body.dark-mode {
   font-size: 0.9rem;
 }
 
-.mdc-icon-button {
-  background: none;
-  border: none;
-  color: inherit !important;
-  cursor: pointer;
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mdc-icon-button:hover {
-  opacity: 0.8;
-}
-
 /* ===== Mobile Navigation ===== */
 .mobile-controls {
   display: none;
+  align-items: center;
+  gap: 12px;
 }
 
 .hamburger-menu {
@@ -243,7 +230,6 @@ h1 {
 
 .dark-mode .feature-card:hover {
   box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
-  transform: translateY(-5px);
 }
 
 .card-image {
@@ -256,18 +242,6 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-/* Fix description line spacing for side-text cards */
-.feature-card.side-text h3,
-.feature-card.side-text p {
-  margin: 0;
-  line-height: 1.2;
-  text-align: center;
-}
-
-.feature-card.side-text p {
-  margin-top: 4px;
 }
 
 .feature-card h3 {
@@ -312,13 +286,11 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: transparent !important;
 }
 
 .gradient-container img {
   max-width: 100%;
   height: auto;
-  background: transparent !important;
   mix-blend-mode: multiply;
 }
 
@@ -356,6 +328,13 @@ h1 {
   cursor: pointer;
   color: inherit;
   padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.material-icons {
+  font-size: 24px;
 }
 
 /* ===== Responsive Design ===== */
@@ -366,12 +345,9 @@ h1 {
   
   .mobile-controls {
     display: flex;
-    gap: 12px;
-    align-items: center;
   }
   
   .top-bar {
-    grid-template-columns: auto 1fr auto;
     padding: 0 16px;
   }
   
@@ -436,28 +412,4 @@ h1 {
   .text-content p {
     font-size: 1rem;
   }
-}
-
-/* Make sure mobile controls are properly aligned */
-.mobile-controls {
-  display: none;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Make sure theme toggle is visible and clickable */
-.mobile-controls .theme-toggle {
-    background: none;
-    border: none;
-    padding: 8px;
-    cursor: pointer;
-    color: inherit;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Make sure icons are properly sized */
-.mobile-controls .material-icons {
-    font-size: 24px;
 }
