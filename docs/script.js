@@ -69,3 +69,17 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 });
+
+// Gradient visibility update on load and theme change
+function updateBackgroundGradients() {
+  const isDark = document.body.classList.contains('dark-mode');
+  document.querySelectorAll('.background-gradients img').forEach(img => {
+    const mode = img.getAttribute('data-mode');
+    img.style.display = (isDark && mode === 'dark') || (!isDark && mode === 'light') ? 'block' : 'none';
+  });
+}
+updateBackgroundGradients();
+
+// Update gradients on theme toggle
+const mutationObserver = new MutationObserver(updateBackgroundGradients);
+mutationObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
