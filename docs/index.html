@@ -6,29 +6,50 @@
     <title>RiGallery - Private Photo Gallery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="top-bar">
     <div class="logo">RiGallery</div>
-    <nav class="nav-center">
+    
+    <!-- Desktop Navigation -->
+    <nav class="nav-center desktop-nav">
       <a href="#">Home</a>
       <a href="#">Features</a>
       <a href="#">Support</a>
     </nav>
-    <div class="right-controls">
+    
+    <div class="right-controls desktop-nav">
       <a href="https://t.me/riprojects_app" class="social-link">Telegram</a>
       <a href="https://github.com/fast4x/RiGallery" class="social-link">GitHub</a>
       <button class="theme-toggle">
         <span class="material-icons">dark_mode</span>
       </button>
     </div>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-controls">
+      <button class="theme-toggle">
+        <span class="material-icons">dark_mode</span>
+      </button>
+      <button class="hamburger-menu">
+        <span class="material-icons">menu</span>
+      </button>
+    </div>
   </header>
+  
+  <!-- Mobile Menu (hidden by default) -->
+  <div class="mobile-menu">
+    <nav class="mobile-nav">
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">Support</a>
+      <a href="https://t.me/riprojects_app">Telegram</a>
+      <a href="https://github.com/fast4x/RiGallery">GitHub</a>
+    </nav>
+  </div>
 
   <main class="content">
     <section class="hero">
