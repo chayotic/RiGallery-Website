@@ -21,6 +21,21 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('theme', 'light');
         }
     });
+    
+    // Mobile menu toggle
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    hamburgerMenu.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.mobile-controls') && !e.target.closest('.mobile-menu')) {
+            mobileMenu.classList.remove('active');
+        }
+    });
 });
 
 // Add intersection observer for gradient sections
