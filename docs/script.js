@@ -55,6 +55,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Smooth scrolling functionality
+    document.querySelectorAll('.nav-link[data-target]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('data-target');
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetId === 'top' ? 0 : targetElement.offsetTop - 64,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    const menuIcon = hamburgerMenu.querySelector('.material-icons');
+                    if (menuIcon) menuIcon.textContent = 'menu';
+                }
+            }
+        });
+    });
+
     // Intersection observer for gradient sections
     const gradientSections = document.querySelectorAll('.gradient-section');
     const observer = new IntersectionObserver((entries) => {
