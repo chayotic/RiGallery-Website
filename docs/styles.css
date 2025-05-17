@@ -170,7 +170,7 @@ h1 {
 }
 
 .dark-mode .feature-card:hover {
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
   transform: translateY(-5px);
 }
 
@@ -259,4 +259,92 @@ h1 {
   cursor: pointer;
   color: inherit;
   padding: 8px;
+}
+
+/* ===== Gradient Sections ===== */
+.gradient-sections {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.gradient-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 80px;
+  gap: 40px;
+}
+
+.gradient-section:last-child {
+  margin-bottom: 0;
+}
+
+.gradient-container {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent !important; /* Ensure no background */
+}
+
+.gradient-container img {
+  max-width: 100%;
+  height: auto;
+  background: transparent !important; /* Ensure no background on image */
+  mix-blend-mode: multiply; /* Helps blend better with dark mode */
+}
+
+.dark-mode .gradient-container img {
+  mix-blend-mode: screen; /* Better visibility in dark mode */
+  filter: brightness(1.1); /* Slightly brighter in dark mode */
+}
+
+.text-content {
+  flex: 1;
+  max-width: 50%;
+  padding: 20px;
+}
+
+.text-content h2 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.text-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--subtext-light);
+}
+
+.dark-mode .text-content p {
+  color: var(--subtext-dark);
+}
+
+/* Alternate layout for mobile */
+@media (max-width: 768px) {
+  .gradient-section {
+    flex-direction: column;
+    margin-bottom: 60px;
+    gap: 30px;
+  }
+
+  .gradient-container,
+  .text-content {
+    max-width: 100%;
+  }
+
+  .gradient-container.left,
+  .gradient-container.right {
+    order: 1;
+  }
+
+  .text-content.left,
+  .text-content.right {
+    order: 2;
+    text-align: center;
+    padding: 0 20px;
+  }
 }
