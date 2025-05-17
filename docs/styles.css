@@ -474,3 +474,20 @@ a:active {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
 }
+
+.gradient-container img[data-mode="light"],
+.gradient-container img[data-mode="dark"] {
+  display: none;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: opacity 0.3s ease;
+}
+
+body.dark-mode .gradient-container img[data-mode="dark"] {
+  display: block;
+}
+
+body:not(.dark-mode) .gradient-container img[data-mode="light"] {
+  display: block;
+}
